@@ -1,0 +1,13 @@
+h1 Calendar
+table
+	|
+	thead
+		tr
+			th Rendez-vous
+			th Début
+			th Fin
+	tbody
+		- @content.each do | text |
+			tr
+				- text.each do | t | 
+					td = t
