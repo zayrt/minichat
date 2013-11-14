@@ -1,0 +1,17 @@
+<% if !@micropost.nil? && @micropost.errors.any? %>
+	The form contains <%= pluralize(@micropost.errors.count, "error") %>.
+	<% @micropost.errors.full_messages.each do |msg| %>
+		<li> <%= msg %> </li>
+	<% end %>
+<% end %>
+<h1>Minichat</h1>
+<%= form_tag(controller: "minichat", action: "traitement") do %>
+	<%= label_tag(:author, "Author: ") %>
+	<%= text_field_tag(:author) %>
+	<%= label_tag(:post, "Post: ") %>
+	<%= text_field_tag(:post) %>
+	<%= submit_tag "Post a message" %>
+<% end %>
+<% @post.each do |last| %>
+	<p> <%= last.author %> : <%= last.content %> </p>
+<% end %>
